@@ -82,7 +82,6 @@ public class Bullet_Ball : MonoBehaviour
         vfx_explo.Play();
         other_settings.Explo_Vibro();
         enemies_radar.Perform_Explosion();
-        enemies_radar.Perform_Explosion();
 
         float vfx_radius = Count_VFX_Size();
         vfx_explo.gameObject.transform.localScale = new Vector3(vfx_radius, vfx_radius, vfx_radius);
@@ -111,7 +110,7 @@ public class Bullet_Ball : MonoBehaviour
 
         transform.localScale = new Vector3(start_size, start_size, start_size);
 
-        enemies_radar.Clear_Before_Pull();
+        enemies_radar.Clear_Before_Pool();
     }
 
     private void OnEnable()

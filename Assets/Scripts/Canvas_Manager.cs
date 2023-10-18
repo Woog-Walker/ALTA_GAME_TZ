@@ -21,7 +21,8 @@ public class Canvas_Manager : MonoBehaviour
     [SerializeField] GameObject pannel_over;
     [SerializeField] TMP_Text text_status;
 
-    float transition_duration = 0.5f;
+    float transition_duration = 0.75f;
+    float side_bars_offset = 400;
     const string text_win = "YOU WIN";
     const string text_loss = "GAME OVER";
 
@@ -43,8 +44,8 @@ public class Canvas_Manager : MonoBehaviour
     [Button]
     public void Show_Panel_Win()
     {
-        pannel_over.transform.DOLocalMove(new Vector3(0, 0, 0), transition_duration).SetEase(Ease.OutBack);
-        pannel_over.transform.DOScale(new Vector3(1, 1, 1), transition_duration).SetEase(Ease.OutBack);
+        pannel_over.transform.DOLocalMove(Vector3.zero, transition_duration).SetEase(Ease.OutBack);
+        pannel_over.transform.DOScale(Vector3.one, transition_duration).SetEase(Ease.OutBack);
 
         text_status.text = text_win;
         pannel_over.SetActive(true);
@@ -54,8 +55,8 @@ public class Canvas_Manager : MonoBehaviour
 
     public void Show_Panel_Loss()
     {
-        pannel_over.transform.DOLocalMove(new Vector3(0, 0, 0), transition_duration).SetEase(Ease.OutBack);
-        pannel_over.transform.DOScale(new Vector3(1, 1, 1), transition_duration).SetEase(Ease.OutBack);
+        pannel_over.transform.DOLocalMove(Vector3.zero, transition_duration).SetEase(Ease.OutBack);
+        pannel_over.transform.DOScale(Vector3.one, transition_duration).SetEase(Ease.OutBack);
 
         text_status.text = text_loss;
         pannel_over.SetActive(true);
@@ -65,8 +66,8 @@ public class Canvas_Manager : MonoBehaviour
 
     private void Hide_Bars()
     {
-        bar_charge.transform.DOMove(new Vector3(bar_charge.transform.position.x, -400, 0), transition_duration).SetEase(Ease.InOutQuad);
-        bar_health.transform.DOMove(new Vector3(bar_health.transform.position.x, -400, 0), transition_duration).SetEase(Ease.InOutQuad);
+        bar_charge.transform.DOMove(new Vector3(bar_charge.transform.position.x, -side_bars_offset, 0), transition_duration).SetEase(Ease.InOutQuad);
+        bar_health.transform.DOMove(new Vector3(bar_health.transform.position.x, -side_bars_offset, 0), transition_duration).SetEase(Ease.InOutQuad);
     }
     #endregion
 

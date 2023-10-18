@@ -7,15 +7,17 @@ public class Radar_For_Enemies : MonoBehaviour
     [SerializeField] SphereCollider collider_explo;
     [SerializeField] List<GameObject> enemies_list = new List<GameObject>();
 
+    [Space]
+    [Header("RADIUS AND MULTIPLICATOR")]
+    [SerializeField] float compare_power_small;
+    [SerializeField] float compare_power_mid;
+    [SerializeField] float compare_power_big;
+    [Space]
+    [SerializeField] float multiplicator_small;
+    [SerializeField] float multiplicator_mid;
+    [SerializeField] float multiplicator_big;
+
     float start_radius;
-
-    float compare_step_1 = 0.5f;
-    float compare_step_2 = 0.75f;
-    float compare_step_3 = 0.9f;
-
-    float radius_explo_1 = 1.1f;
-    float radius_explo_2 = 1.2f;
-    float radius_explo_3 = 1.4f;
 
     private void Awake()
     {
@@ -24,17 +26,19 @@ public class Radar_For_Enemies : MonoBehaviour
 
     public void Recount_Radius(float _tmp_value)
     {
-        if (_tmp_value < compare_step_1)        
+        // explo radius
+
+        if (_tmp_value < compare_power_small)        
             collider_explo.radius += _tmp_value;        
 
-        if (_tmp_value >= compare_step_1 && _tmp_value < compare_step_2)        
-            collider_explo.radius = (collider_explo.radius + _tmp_value) * radius_explo_1;
+        if (_tmp_value >= compare_power_small && _tmp_value < compare_power_mid)        
+            collider_explo.radius = (collider_explo.radius + _tmp_value) * multiplicator_small;
 
-        if (_tmp_value >= compare_step_2 && _tmp_value < compare_step_3)
-            collider_explo.radius = (collider_explo.radius + _tmp_value) * radius_explo_2;
+        if (_tmp_value >= compare_power_mid && _tmp_value < compare_power_big)
+            collider_explo.radius = (collider_explo.radius + _tmp_value) * multiplicator_mid;
 
-        if (_tmp_value >= compare_step_3)
-            collider_explo.radius = (collider_explo.radius + _tmp_value) * radius_explo_3;
+        if (_tmp_value >= compare_power_big)
+            collider_explo.radius = (collider_explo.radius + _tmp_value) * multiplicator_big;
     }
 
     public void Perform_Explosion()
@@ -55,7 +59,7 @@ public class Radar_For_Enemies : MonoBehaviour
             enemies_list.Remove(other.gameObject);
     }
 
-    public void Clear_Before_Pull()
+    public void Clear_Before_Pool()
     {
         collider_explo.radius = start_radius;
         enemies_list = new List<GameObject>();
