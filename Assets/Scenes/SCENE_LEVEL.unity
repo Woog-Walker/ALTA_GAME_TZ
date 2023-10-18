@@ -26868,8 +26868,8 @@ MonoBehaviour:
   current_ball: {fileID: 0}
   shoot_force: 0
   size_to_defeat: 0.1
-  resize_value_player: 0.002
-  resize_value_road: 0.001
+  resize_value_player: 0.0024
+  resize_value_road: 0.0012
   shooting_power: 0.025
   camera_controller: {fileID: 495156706}
 --- !u!1001 &743647749
@@ -73091,7 +73091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6562006260611553017, guid: d57d287d45875d04ab424c969af13099, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -301.6
+      value: -315.9
       objectReference: {fileID: 0}
     - target: {fileID: 6562006260611553017, guid: d57d287d45875d04ab424c969af13099, type: 3}
       propertyPath: m_LocalRotation.w
