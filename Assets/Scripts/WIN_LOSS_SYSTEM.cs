@@ -12,6 +12,8 @@ public class WIN_LOSS_SYSTEM : MonoBehaviour
     [SerializeField] Transform player_gfx;
     [SerializeField] ParticleSystem vfx_defeat;
 
+    float delay = 0.5f;
+
     [Inject] private Canvas_Manager canvas_manager;
 
     #region PART WIN     
@@ -24,7 +26,7 @@ public class WIN_LOSS_SYSTEM : MonoBehaviour
     {
         touch_controller.Disable_Interactions();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delay);
 
         player_controller.velocity = 0;
         canvas_manager.Show_Panel_Win();
@@ -40,13 +42,13 @@ public class WIN_LOSS_SYSTEM : MonoBehaviour
 
     IEnumerator Loss_Delay()
     {
-        player_gfx.DOScale(Vector3.zero, 0.5f);
+        player_gfx.DOScale(Vector3.zero, delay);
         vfx_defeat.Play();
 
         touch_controller.Disable_Interactions();
         player_controller.velocity = 0;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delay);
 
         canvas_manager.Show_Panel_Loss();
     }
