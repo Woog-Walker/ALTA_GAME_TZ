@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 
 public class Camera_Controller : MonoBehaviour
 {
+    [Header("TRANSFORMS")]
     [SerializeField] Transform player;
     [SerializeField] Transform camera_main;
     [SerializeField] Transform camera_holder;
@@ -20,7 +21,6 @@ public class Camera_Controller : MonoBehaviour
     [Header("CAMERA")]
     [SerializeField] float shake_power;
     [SerializeField] float shake_duration;
-
 
     private void FixedUpdate()
     {

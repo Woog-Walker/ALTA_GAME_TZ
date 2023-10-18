@@ -11,23 +11,27 @@ public class Bullet_Ball : MonoBehaviour
     public float charge_force;
     [SerializeField] ParticleSystem vfx_explo;
 
-    float start_size;
-    private bool is_locked = true;
-
-    Radar_For_Enemies enemies_radar;
-
     [Header("WHAT DO DISABLE")]
     [SerializeField] SphereCollider sphereCollider;
     [SerializeField] MeshRenderer meshRenderer;
+
+
+    float explo_delay = 0.75f;
+    float start_size;
+    float vfx_start_size;
+    private bool is_locked = true;
+
+    Radar_For_Enemies enemies_radar;
 
     [Inject] private Other_Settings other_settings;
     [Inject] private Pool_Bullets pool_bullets;
 
     private void Awake()
     {
-        start_size = transform.localScale.x;
+        vfx_start_size = vfx_explo.gameObject.transform.localScale.x;
         enemies_radar = GetComponentInChildren<Radar_For_Enemies>();
 
+        start_size = transform.localScale.x;
         start_speed = speed;
     }
 
@@ -71,36 +75,31 @@ public class Bullet_Ball : MonoBehaviour
     {
         speed = 0;
 
-        float vfx_radius = Count_VFX_Size();
-        vfx_explo.gameObject.transform.localScale = new Vector3(vfx_radius, vfx_radius, vfx_radius);
-
-        vfx_explo.Play();
-
-        enemies_radar.Perform_Explosion();
-
         sphereCollider.enabled = false;
         meshRenderer.enabled = false;
 
-        enemies_radar.Perform_Explosion();
+        vfx_explo.Play();
         other_settings.Explo_Vibro();
+        enemies_radar.Perform_Explosion();
+        enemies_radar.Perform_Explosion();
 
-        yield return new WaitForSeconds(0.75f);
+        float vfx_radius = Count_VFX_Size();
+        vfx_explo.gameObject.transform.localScale = new Vector3(vfx_radius, vfx_radius, vfx_radius);
+
+        yield return new WaitForSeconds(explo_delay);
 
         Clear_Before_Pool();
         pool_bullets.Return_Object_To_Pool(gameObject);
-
 
         gameObject.SetActive(false);
     }
 
     private float Count_VFX_Size()
     {
-        // count vfx size by shot power
-        vfx_explo.gameObject.transform.localScale = new Vector3(2, 2, 2);
+        vfx_explo.gameObject.transform.localScale = new Vector3(vfx_start_size, vfx_start_size, vfx_start_size);
 
-
-
-        return vfx_explo.gameObject.transform.localScale.x + charge_force;
+        float final_size = vfx_explo.gameObject.transform.localScale.x + charge_force;
+        return final_size;
     }
 
     public void Clear_Before_Pool()

@@ -15,6 +15,7 @@ public class Canvas_Manager : MonoBehaviour
     [Space]
     [SerializeField] GameObject bar_charge;
     [SerializeField] GameObject bar_health;
+
     [Space]
     [Header("GAME FINISH STUFF")]
     [SerializeField] GameObject pannel_over;
@@ -26,7 +27,7 @@ public class Canvas_Manager : MonoBehaviour
 
     [Inject] private Other_Settings other_settings;
 
-
+    #region UI BARS
     public void Repaint_Charge_Bar(float _tmp_amount)
     {
         bar_charge_fill.fillAmount = _tmp_amount;
@@ -36,7 +37,9 @@ public class Canvas_Manager : MonoBehaviour
     {
         bar_health_fill.fillAmount = _tmp_amount;
     }
+    #endregion
 
+    #region GAME OVER PANELS
     [Button]
     public void Show_Panel_Win()
     {
@@ -65,7 +68,9 @@ public class Canvas_Manager : MonoBehaviour
         bar_charge.transform.DOMove(new Vector3(bar_charge.transform.position.x, -400, 0), transition_duration).SetEase(Ease.InOutQuad);
         bar_health.transform.DOMove(new Vector3(bar_health.transform.position.x, -400, 0), transition_duration).SetEase(Ease.InOutQuad);
     }
+    #endregion
 
+    #region BUTTONS
     public void Button_Replay()
     {
         other_settings.Replay_Scene();
@@ -75,4 +80,5 @@ public class Canvas_Manager : MonoBehaviour
     {
         other_settings.Exit_App();
     }
+    #endregion
 }
