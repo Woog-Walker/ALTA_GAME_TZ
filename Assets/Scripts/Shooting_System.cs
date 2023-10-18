@@ -121,7 +121,6 @@ public class Shooting_System : MonoBehaviour
     {
         if (size_player < size_to_defeat && !is_dead)
         {
-
             is_dead = true;
             win_lose_system.Game_Loss();
 

@@ -20,13 +20,13 @@ public class Radar_For_Enemies : MonoBehaviour
             collider_explo.radius += _tmp_value;        
 
         if (_tmp_value >= 0.5f && _tmp_value < 0.75f)        
-            collider_explo.radius = (collider_explo.radius + _tmp_value) * 1.2f;
+            collider_explo.radius = (collider_explo.radius + _tmp_value) * 1.1f;
 
         if (_tmp_value >= 0.75f && _tmp_value < 0.9f)
-            collider_explo.radius = (collider_explo.radius + _tmp_value) * 1.3f;
+            collider_explo.radius = (collider_explo.radius + _tmp_value) * 1.2f;
 
         if (_tmp_value >= 0.9f)
-            collider_explo.radius = (collider_explo.radius + _tmp_value) * 1.8f;
+            collider_explo.radius = (collider_explo.radius + _tmp_value) * 1.4f;
     }
 
     public void Perform_Explosion()
