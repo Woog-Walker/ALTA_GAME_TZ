@@ -46,6 +46,6 @@ public class Enemy_Controller : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player_GFX"))
-            win_lose_system.Game_Loss();
+            win_lose_system.Game_Defeat();
     }
 }

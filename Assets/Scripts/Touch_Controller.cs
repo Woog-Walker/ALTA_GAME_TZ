@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class Touch_Controller : MonoBehaviour
 {
     [SerializeField] bool is_pressed = false;
-
     [HideInInspector] public bool is_game_over { get; private set; }
+
+    [Inject] Shooting_System shooting_system;
 
     private void Start()
     {
@@ -26,7 +28,7 @@ public class Touch_Controller : MonoBehaviour
 #endif
 
         if (is_pressed)
-            Shooting_System.instance.Whie_Pressed();
+            shooting_system.Whie_Pressed();
 
 #if PLATFORM_ANDROID
         if (Input.touchCount > 0)
@@ -51,13 +53,13 @@ public class Touch_Controller : MonoBehaviour
     private void Input_Pressed()
     {
         is_pressed = true;
-        Shooting_System.instance.Create_Bullet();
+        shooting_system.Create_Bullet();
     }
 
     private void Input_UnPressed()
     {
         is_pressed = false;
-        Shooting_System.instance.While_UnPressed();
+        shooting_system.While_UnPressed();
     }
     #endregion
 

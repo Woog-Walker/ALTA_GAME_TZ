@@ -14,6 +14,7 @@ public class WIN_LOSS_SYSTEM : MonoBehaviour
 
     [Inject] private Canvas_Manager canvas_manager;
 
+    #region PART WIN     
     public void Game_Win()
     {
         StartCoroutine(Win_Delay());
@@ -29,7 +30,10 @@ public class WIN_LOSS_SYSTEM : MonoBehaviour
         canvas_manager.Show_Panel_Win();
     }
 
-    public void Game_Loss()
+    #endregion
+
+    #region PART DEFEAT     
+    public void Game_Defeat()
     {
         StartCoroutine(Loss_Delay());
     }
@@ -46,4 +50,5 @@ public class WIN_LOSS_SYSTEM : MonoBehaviour
 
         canvas_manager.Show_Panel_Loss();
     }
+    #endregion
 }

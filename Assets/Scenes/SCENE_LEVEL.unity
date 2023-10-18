@@ -26117,6 +26117,7 @@ MonoBehaviour:
   win_lose_system: {fileID: 1169696105}
   other_settings: {fileID: 1528559938}
   pool_bullets: {fileID: 607013035}
+  shooting_system: {fileID: 738243073}
 --- !u!1001 &717776128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73223,6 +73224,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1222369899}
     m_Modifications:
+    - target: {fileID: 894074680608916582, guid: d57d287d45875d04ab424c969af13099, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 894074680608916582, guid: d57d287d45875d04ab424c969af13099, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 32.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 894074680608916582, guid: d57d287d45875d04ab424c969af13099, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.700012
+      objectReference: {fileID: 0}
     - target: {fileID: 6562006260611553017, guid: d57d287d45875d04ab424c969af13099, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

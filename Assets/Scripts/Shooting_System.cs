@@ -26,20 +26,11 @@ public class Shooting_System : MonoBehaviour
 
     bool is_dead = false;
 
-    public static Shooting_System instance;
     [SerializeField] Camera_Controller camera_controller;
 
     [Inject] Canvas_Manager canvas_manager;
     [Inject] WIN_LOSS_SYSTEM win_lose_system;
     [Inject] Pool_Bullets pool_bullets;
-
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(instance);
-    }
 
     private void Start()
     {
@@ -122,7 +113,7 @@ public class Shooting_System : MonoBehaviour
         if (size_player < size_to_defeat && !is_dead)
         {
             is_dead = true;
-            win_lose_system.Game_Loss();
+            win_lose_system.Game_Defeat();
 
             if (shoot_force > 0)
                 Release_Bullet();
