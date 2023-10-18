@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using System.Collections;
+using UnityEngine;
 using Zenject;
 
 public class WIN_LOSS_SYSTEM : MonoBehaviour
