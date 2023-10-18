@@ -9,7 +9,7 @@ using Zenject;
 
 public class Canvas_Manager : MonoBehaviour
 {
-    [Header("BARS")]
+    [Header("UI BARS")]
     [SerializeField] Image bar_charge_fill;
     [SerializeField] Image bar_health_fill;
     [Space]

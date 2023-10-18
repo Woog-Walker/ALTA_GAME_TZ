@@ -9,6 +9,14 @@ public class Radar_For_Enemies : MonoBehaviour
 
     float start_radius;
 
+    float compare_step_1 = 0.5f;
+    float compare_step_2 = 0.75f;
+    float compare_step_3 = 0.9f;
+
+    float radius_explo_1 = 1.1f;
+    float radius_explo_2 = 1.2f;
+    float radius_explo_3 = 1.4f;
+
     private void Awake()
     {
         start_radius = collider_explo.radius;
@@ -16,17 +24,17 @@ public class Radar_For_Enemies : MonoBehaviour
 
     public void Recount_Radius(float _tmp_value)
     {
-        if (_tmp_value < 0.5f)        
+        if (_tmp_value < compare_step_1)        
             collider_explo.radius += _tmp_value;        
 
-        if (_tmp_value >= 0.5f && _tmp_value < 0.75f)        
-            collider_explo.radius = (collider_explo.radius + _tmp_value) * 1.1f;
+        if (_tmp_value >= compare_step_1 && _tmp_value < compare_step_2)        
+            collider_explo.radius = (collider_explo.radius + _tmp_value) * radius_explo_1;
 
-        if (_tmp_value >= 0.75f && _tmp_value < 0.9f)
-            collider_explo.radius = (collider_explo.radius + _tmp_value) * 1.2f;
+        if (_tmp_value >= compare_step_2 && _tmp_value < compare_step_3)
+            collider_explo.radius = (collider_explo.radius + _tmp_value) * radius_explo_2;
 
-        if (_tmp_value >= 0.9f)
-            collider_explo.radius = (collider_explo.radius + _tmp_value) * 1.4f;
+        if (_tmp_value >= compare_step_3)
+            collider_explo.radius = (collider_explo.radius + _tmp_value) * radius_explo_3;
     }
 
     public void Perform_Explosion()
@@ -52,5 +60,4 @@ public class Radar_For_Enemies : MonoBehaviour
         collider_explo.radius = start_radius;
         enemies_list = new List<GameObject>();
     }
-
 }

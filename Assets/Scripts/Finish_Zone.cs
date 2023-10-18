@@ -11,6 +11,5 @@ public class Finish_Zone : MonoBehaviour
     {
         if (other.CompareTag("Player_GFX"))
             win_lose_system.Game_Win();
-
     }
 }

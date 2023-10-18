@@ -19,12 +19,12 @@ public class Pool_Bullets : MonoBehaviour
             }
         }
 
-        GameObject newObj = Instantiate(prefab_bullet);
-        bullets_pool.Add(newObj);
-        return newObj;
+        GameObject new_obj = Instantiate(prefab_bullet);
+        bullets_pool.Add(new_obj);
+
+        return new_obj;
     }
 
-    // Return an object to the pool
     public void Return_Object_To_Pool(GameObject obj)
     {
         obj.transform.parent = transform;
