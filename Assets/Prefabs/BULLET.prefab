@@ -125,8 +125,8 @@ MonoBehaviour:
   speed: 70
   charge_force: 0
   vfx_explo: {fileID: 7366125010790924241}
-  sphereCollider: {fileID: 4564645772851846248}
-  meshRenderer: {fileID: 1218250978214013730}
+  sphere_collider: {fileID: 4564645772851846248}
+  mesh_renderer: {fileID: 1218250978214013730}
 --- !u!54 &4527942301497914919
 Rigidbody:
   m_ObjectHideFlags: 0

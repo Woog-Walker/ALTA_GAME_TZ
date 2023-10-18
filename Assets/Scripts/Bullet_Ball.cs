@@ -12,10 +12,10 @@ public class Bullet_Ball : MonoBehaviour
     [SerializeField] ParticleSystem vfx_explo;
 
     [Header("WHAT DO DISABLE")]
-    [SerializeField] SphereCollider sphereCollider;
-    [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] SphereCollider sphere_collider;
+    [SerializeField] MeshRenderer mesh_renderer;
 
-
+    float size_multiplicator = 1.5f;
     float explo_delay = 0.75f;
     float start_size;
     float vfx_start_size;
@@ -46,7 +46,8 @@ public class Bullet_Ball : MonoBehaviour
         transform.localScale = new Vector3(
             start_size + charge_force,
             start_size + charge_force,
-            start_size + charge_force);
+            start_size + charge_force) 
+            * size_multiplicator;
     }
 
     private void Move_Forward()
@@ -64,7 +65,7 @@ public class Bullet_Ball : MonoBehaviour
 
     public void Launch_Bullet()
     {
-        sphereCollider.enabled = true;
+        sphere_collider.enabled = true;
         speed = start_speed;
         is_locked = false;
 
@@ -75,8 +76,8 @@ public class Bullet_Ball : MonoBehaviour
     {
         speed = 0;
 
-        sphereCollider.enabled = false;
-        meshRenderer.enabled = false;
+        sphere_collider.enabled = false;
+        mesh_renderer.enabled = false;
 
         vfx_explo.Play();
         other_settings.Explo_Vibro();
@@ -105,8 +106,8 @@ public class Bullet_Ball : MonoBehaviour
     public void Clear_Before_Pool()
     {
         is_locked = true;
-        meshRenderer.enabled = true;
-        sphereCollider.enabled = true;
+        mesh_renderer.enabled = true;
+        sphere_collider.enabled = true;
 
         transform.localScale = new Vector3(start_size, start_size, start_size);
 
@@ -115,6 +116,6 @@ public class Bullet_Ball : MonoBehaviour
 
     private void OnEnable()
     {
-        sphereCollider.enabled = false;
+        sphere_collider.enabled = false;
     }
 }
