@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using DG.Tweening;
+using Zenject;
 
 public class Door_Script : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class Door_Script : MonoBehaviour
     [SerializeField] Transform door;
 
     Sequence sequence;
+
+    [Inject]
+    private void Construct(Player_Controller player_controller)
+    {
+        player = player_controller.transform;
+    }
 
     private void Awake()
     {

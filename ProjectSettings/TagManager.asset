@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Player_GFX
+  - Player_OBJ
+  - Camera_Holder
+  - Camera_Main
   layers:
   - Default
   - TransparentFX

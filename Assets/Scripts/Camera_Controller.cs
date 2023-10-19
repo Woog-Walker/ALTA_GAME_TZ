@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Zenject;
 
 public class Camera_Controller : MonoBehaviour
 {
@@ -21,6 +22,18 @@ public class Camera_Controller : MonoBehaviour
     [Header("CAMERA")]
     [SerializeField] float shake_power;
     [SerializeField] float shake_duration;
+
+    [Inject]
+    private void Construct(Player_Controller player_controller)
+    {
+        player = player_controller.transform;
+    }
+
+    private void Start()
+    {
+        camera_main = Camera.main.transform;
+        camera_holder = GameObject.FindGameObjectWithTag("Camera_Holder").transform;
+    }
 
     private void FixedUpdate()
     {

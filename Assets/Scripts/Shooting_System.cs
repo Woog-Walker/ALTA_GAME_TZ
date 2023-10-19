@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
+using Zenject.SpaceFighter;
 
 public class Shooting_System : MonoBehaviour
 {
@@ -34,6 +36,8 @@ public class Shooting_System : MonoBehaviour
 
     private void Start()
     {
+        player_gfx = GameObject.FindGameObjectWithTag("Player_GFX").transform;
+
         Count_Start_Size();
     }
 

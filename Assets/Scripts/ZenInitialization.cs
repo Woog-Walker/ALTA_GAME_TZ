@@ -12,6 +12,9 @@ public class ZenInitialization : MonoInstaller
     [SerializeField] private Other_Settings other_settings;
     [SerializeField] private Pool_Bullets pool_bullets;
     [SerializeField] private Shooting_System shooting_system;
+    [Space]
+    [SerializeField] Transform start_point;
+    [SerializeField] GameObject player_prefab;
 
     public override void InstallBindings()
     {
@@ -20,5 +23,11 @@ public class ZenInitialization : MonoInstaller
         Container.Bind<Other_Settings>().FromInstance(other_settings);
         Container.Bind<Pool_Bullets>().FromInstance(pool_bullets);
         Container.Bind<Shooting_System>().FromInstance(shooting_system);
+
+        Player_Controller player_controller = Container
+            .InstantiatePrefabForComponent<Player_Controller>(player_prefab, start_point.position, Quaternion.identity, null);
+
+        Container.Bind<Player_Controller>()
+            .FromInstance(player_controller);
     }
 }
