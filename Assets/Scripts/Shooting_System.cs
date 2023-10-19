@@ -34,10 +34,15 @@ public class Shooting_System : MonoBehaviour
     [Inject] WIN_LOSS_SYSTEM win_lose_system;
     [Inject] Pool_Bullets pool_bullets;
 
+    [Inject]
+    private void Construct(Player_Controller player_controller)
+    {
+        eject_point = player_controller.ejection_point;
+        player_gfx = player_controller.player_obj;
+    }
+
     private void Start()
     {
-        player_gfx = GameObject.FindGameObjectWithTag("Player_GFX").transform;
-
         Count_Start_Size();
     }
 

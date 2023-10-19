@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 using Zenject;
+using Zenject.SpaceFighter;
 
 public class WIN_LOSS_SYSTEM : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class WIN_LOSS_SYSTEM : MonoBehaviour
     float delay = 0.5f;
 
     [Inject] private Canvas_Manager canvas_manager;
+    [Inject]
+    private void Construct(Player_Controller _player_controller)
+    {
+        player_controller = _player_controller;
+        player_gfx = _player_controller.player_gfx;
+        vfx_defeat = _player_controller.vfx_defeat;
+    }
 
     #region PART WIN     
     public void Game_Win()

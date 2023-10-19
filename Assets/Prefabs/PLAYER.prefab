@@ -370,6 +370,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 20
   player_gfx: {fileID: 3315434970519833659}
+  player_obj: {fileID: 3891785929724990477}
+  camera_holder: {fileID: 894074680608916582}
+  camera_main: {fileID: 710020125051630691}
+  ejection_point: {fileID: 1476524302827492560}
+  vfx_defeat: {fileID: 6803049683542743939}
 --- !u!1001 &6677620477993181125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -470,5 +475,10 @@ PrefabInstance:
 --- !u!4 &6675861997055182513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4153320611076468, guid: 7b5359d8127ef9747b50137fa47912f7, type: 3}
+  m_PrefabInstance: {fileID: 6677620477993181125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6803049683542743939 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198974038013264966, guid: 7b5359d8127ef9747b50137fa47912f7, type: 3}
   m_PrefabInstance: {fileID: 6677620477993181125}
   m_PrefabAsset: {fileID: 0}
